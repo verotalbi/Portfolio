@@ -1,0 +1,510 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#050505">
+  <meta name="description" content="Aissa Talbi — E-commerce Growth Specialist and Remote Sales Operator.">
+  <title>Aissa Talbi — Growth, engineered.</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+    :root {
+      --bg: #050505;
+      --surface: #0c0c0c;
+      --surface-strong: #111;
+      --line: rgba(255, 255, 255, .13);
+      --muted: #8a8a8a;
+      --soft: #c4c4c4;
+      --white: #f4f4f1;
+      --accent: #c9ff65;
+      --max-width: 1240px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--white);
+      font-family: "Manrope", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    ::selection { background: var(--accent); color: #050505; }
+    a { color: inherit; text-decoration: none; }
+
+    .page {
+      position: relative;
+      overflow: hidden;
+    }
+    .page::before {
+      position: absolute;
+      content: "";
+      top: -22rem;
+      left: 50%;
+      width: 58rem;
+      height: 58rem;
+      transform: translateX(-50%);
+      background: radial-gradient(circle, rgba(194, 255, 80, .07), transparent 68%);
+      pointer-events: none;
+    }
+    .container {
+      width: min(calc(100% - 80px), var(--max-width));
+      margin: 0 auto;
+    }
+
+    nav {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 30px 0;
+      border-bottom: 1px solid var(--line);
+      animation: reveal .8s ease both;
+    }
+    .mark {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+    .mark-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 20px rgba(201, 255, 101, .8);
+    }
+    .nav-link {
+      color: var(--soft);
+      font-size: 12px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      transition: color .25s ease;
+    }
+    .nav-link:hover { color: var(--accent); }
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: clamp(20px, 3vw, 46px);
+    }
+    .nav-menu a {
+      color: var(--soft);
+      font-family: "DM Mono", monospace;
+      font-size: 10px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      transition: color .25s ease;
+    }
+    .nav-menu a:hover { color: var(--accent); }
+
+    .hero {
+      position: relative;
+      min-height: min(820px, calc(100vh - 84px));
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 110px 0 130px;
+    }
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 34px;
+      color: var(--accent);
+      font-family: "DM Mono", monospace;
+      font-size: 11px;
+      letter-spacing: .17em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before {
+      width: 35px;
+      height: 1px;
+      background: var(--accent);
+      content: "";
+    }
+    h1 {
+      max-width: 910px;
+      margin: 0;
+      font-size: clamp(5rem, 13vw, 13.5rem);
+      font-weight: 800;
+      letter-spacing: -.105em;
+      line-height: .78;
+    }
+    .hero-heading {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) clamp(160px, 22vw, 280px);
+      align-items: end;
+      gap: clamp(10px, 2vw, 30px);
+    }
+    .profile-frame {
+      flex: 0 0 clamp(130px, 17vw, 220px);
+      aspect-ratio: 1;
+      margin-bottom: 10px;
+      padding: 5px;
+      border: 1px solid rgba(201, 255, 101, .5);
+      border-radius: 50%;
+      background: linear-gradient(145deg, rgba(201, 255, 101, .8), rgba(255, 255, 255, .12) 45%, rgba(201, 255, 101, .25));
+      box-shadow: 0 0 0 7px rgba(201, 255, 101, .035), 0 0 42px rgba(201, 255, 101, .16);
+      overflow: hidden;
+      transform: translate(-22%, 14%);
+      z-index: 1;
+    }
+    .profile-frame img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      filter: saturate(.78) contrast(1.05);
+    }
+    .hero-copy {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 50px;
+      margin-top: 66px;
+    }
+    .hero-subtitle {
+      max-width: 480px;
+      margin: 0;
+      color: var(--soft);
+      font-size: clamp(1rem, 1.6vw, 1.22rem);
+      line-height: 1.55;
+    }
+    .hero-aside {
+      color: var(--muted);
+      font-family: "DM Mono", monospace;
+      font-size: 10px;
+      letter-spacing: .12em;
+      line-height: 1.8;
+      text-align: right;
+      text-transform: uppercase;
+    }
+    .button {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 35px;
+      min-width: 215px;
+      padding: 18px 20px;
+      border: 1px solid rgba(201, 255, 101, .5);
+      background: var(--accent);
+      color: #080808;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      transition: box-shadow .3s ease, transform .3s ease, background .3s ease;
+    }
+    .button:hover {
+      background: #dcff97;
+      box-shadow: 0 0 0 5px rgba(201, 255, 101, .1), 0 0 40px rgba(201, 255, 101, .23);
+      transform: translateY(-3px);
+    }
+    .button span { font-size: 18px; line-height: 0; }
+
+    section { padding: 145px 0; }
+    .section-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 40px;
+      padding-bottom: 34px;
+      border-bottom: 1px solid var(--line);
+    }
+    .section-number {
+      color: var(--accent);
+      font-family: "DM Mono", monospace;
+      font-size: 11px;
+      letter-spacing: .12em;
+    }
+    .section-label {
+      color: var(--muted);
+      font-family: "DM Mono", monospace;
+      font-size: 11px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      padding-top: 58px;
+    }
+    h2 {
+      max-width: 500px;
+      margin: 0;
+      font-size: clamp(2.8rem, 6vw, 5.8rem);
+      letter-spacing: -.07em;
+      line-height: .94;
+    }
+    .story-text {
+      align-self: end;
+      max-width: 505px;
+      margin: 0 0 4px auto;
+      color: var(--soft);
+      font-size: 17px;
+      line-height: 1.8;
+    }
+    #about h2 {
+      max-width: 650px;
+      font-size: clamp(3.3rem, 7vw, 7.4rem);
+    }
+    #about .story-text {
+      max-width: 570px;
+      font-size: clamp(1rem, 1.55vw, 1.18rem);
+      line-height: 1.75;
+    }
+
+    .expertise { background: var(--surface); }
+    .expertise-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      margin-top: 65px;
+      border-top: 1px solid var(--line);
+      border-left: 1px solid var(--line);
+    }
+    .expertise-card {
+      min-height: 245px;
+      padding: 34px;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      transition: background .35s ease, border-color .35s ease, box-shadow .35s ease, transform .35s ease;
+    }
+    .expertise-card:hover {
+      background: var(--surface-strong);
+      border-color: rgba(201, 255, 101, .38);
+      box-shadow: inset 0 0 0 1px rgba(201, 255, 101, .08), 0 16px 38px rgba(0, 0, 0, .28), 0 0 28px rgba(201, 255, 101, .08);
+      transform: translateY(-5px);
+    }
+    .card-number {
+      color: var(--accent);
+      font-family: "DM Mono", monospace;
+      font-size: 11px;
+    }
+    .expertise-card h3 {
+      max-width: 270px;
+      margin: 72px 0 0;
+      font-size: clamp(1.4rem, 2.7vw, 2.2rem);
+      letter-spacing: -.055em;
+      line-height: 1.05;
+    }
+
+    footer {
+      padding: 38px 0 45px;
+      border-top: 1px solid var(--line);
+    }
+    .footer-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+    .footer-contact {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+    .footer-email {
+      color: var(--soft);
+      font-family: "DM Mono", monospace;
+      font-size: clamp(.72rem, 1.2vw, .82rem);
+      letter-spacing: .04em;
+      transition: color .3s ease, text-shadow .3s ease;
+    }
+    .footer-email:hover {
+      color: var(--accent);
+      text-shadow: 0 0 18px rgba(201, 255, 101, .45);
+    }
+    .social-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      color: var(--soft);
+      transition: color .3s ease, border-color .3s ease, box-shadow .3s ease, transform .3s ease;
+    }
+    .social-link:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      box-shadow: 0 0 0 4px rgba(201, 255, 101, .08), 0 0 24px rgba(201, 255, 101, .28);
+      transform: translateY(-3px);
+    }
+    .social-link svg {
+      width: 15px;
+      height: 15px;
+      fill: currentColor;
+    }
+    .social-link.instagram svg {
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.8;
+    }
+    .copyright {
+      color: var(--muted);
+      font-family: "DM Mono", monospace;
+      font-size: 10px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+    .animate-on-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: .08s; }
+    .reveal-delay-2 { transition-delay: .16s; }
+    .reveal-delay-3 { transition-delay: .24s; }
+
+    @keyframes reveal { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(28px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+    }
+    @media (max-width: 700px) {
+      .container { width: min(calc(100% - 40px), var(--max-width)); }
+      nav { padding: 22px 0; }
+      .hero { min-height: auto; padding: 105px 0 100px; }
+      .hero-copy, .story-grid { display: block; }
+      .hero-heading { display: flex; align-items: flex-start; flex-direction: column; gap: 35px; }
+      .profile-frame { flex-basis: 140px; margin-bottom: 0; transform: translate(0, 0); }
+      .hero-aside { display: none; }
+      .hero-subtitle { margin-bottom: 35px; }
+      section { padding: 95px 0; }
+      .story-text { margin-top: 44px; font-size: 15px; }
+      .expertise-grid { grid-template-columns: 1fr; margin-top: 45px; }
+      .expertise-card { min-height: 190px; padding: 25px; }
+      .expertise-card h3 { margin-top: 48px; }
+      .footer-row { align-items: flex-start; flex-direction: column; }
+      .footer-contact { align-items: flex-start; flex-direction: column; gap: 22px; }
+      .social-links { margin-top: 22px; }
+      .nav-menu { gap: 14px; }
+      .nav-link { display: none; }
+      h1 { font-size: clamp(4.5rem, 20vw, 8rem); }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="container">
+      <nav aria-label="Primary navigation">
+        <div class="nav-menu">
+          <a href="#about">About</a>
+          <a href="#expertise">Expertise</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <a class="nav-link" href="#contact">Let's work together <span aria-hidden="true">↗</span></a>
+      </nav>
+
+      <main>
+        <section class="hero" aria-labelledby="hero-title">
+          <div class="eyebrow animate-on-scroll">Scaling D2C brands.</div>
+          <div class="hero-heading">
+            <h1 id="hero-title" class="animate-on-scroll">Aissa<br>Talbi</h1>
+            <div class="profile-frame animate-on-scroll">
+              <img class="animate-on-scroll" src="profile.jpg.jpg" alt="Portrait of Aissa Talbi">
+            </div>
+          </div>
+          <div class="hero-copy">
+            <div>
+              <p class="hero-subtitle animate-on-scroll">E-commerce Growth Specialist &amp; Remote Sales Operator <span aria-hidden="true">|</span> Scaling D2C Operations</p>
+              <a class="button animate-on-scroll" href="https://wa.me/213793335611?text=Hi%20Aissa,%20I%20want%20to%20scale%20my%20D2C%20brand." target="_blank" rel="noopener noreferrer">Scale Your Brand <span aria-hidden="true">↗</span></a>
+            </div>
+            <div class="hero-aside animate-on-scroll">Independent operator<br>Available worldwide<br>Based in Algiers, Algeria</div>
+          </div>
+        </section>
+
+        <section id="about" aria-labelledby="story-title">
+          <div class="section-top animate-on-scroll">
+            <span class="section-number">01 / 03</span>
+            <span class="section-label">About / The methodology</span>
+          </div>
+          <div class="story-grid">
+            <h2 id="story-title" class="animate-on-scroll">Built to see<br>the system.</h2>
+            <p class="story-text animate-on-scroll">I don't rely on theory; I rely on architecture. My expertise lies in diagnosing e-commerce bottlenecks and engineering scalable operations. I look at D2C brands as complex systems—isolating the variables that matter, optimizing remote sales processes, and turning fragmented data into clear, revenue-driving decisions. I build the operating systems for your next phase of growth.</p>
+          </div>
+        </section>
+
+        <section class="expertise" id="expertise" aria-labelledby="expertise-title">
+          <div class="container">
+            <div class="section-top animate-on-scroll">
+              <span class="section-number">02 / 03</span>
+              <span class="section-label" id="expertise-title">Capabilities / The toolkit</span>
+            </div>
+            <div class="expertise-grid">
+              <article class="expertise-card animate-on-scroll"><div class="card-number">01</div><h3>E-commerce<br>Operations</h3></article>
+              <article class="expertise-card animate-on-scroll"><div class="card-number">02</div><h3>Remote Sales<br>Closing</h3></article>
+              <article class="expertise-card animate-on-scroll"><div class="card-number">03</div><h3>D2C Brand<br>Scaling</h3></article>
+              <article class="expertise-card animate-on-scroll"><div class="card-number">04</div><h3>AI &amp; E-commerce<br>Automation</h3></article>
+            </div>
+          </div>
+        </section>
+
+        <section id="contact" aria-labelledby="contact-title">
+          <div class="section-top animate-on-scroll">
+            <span class="section-number">03 / 03</span>
+            <span class="section-label">Contact / Start a conversation</span>
+          </div>
+          <div class="story-grid">
+            <h2 id="contact-title" class="animate-on-scroll">Make the<br>next move.</h2>
+            <div class="story-text">
+              <p class="animate-on-scroll">Have an ambitious brand and a complex problem? Let’s build the operating system for your next phase of growth.</p>
+              <a class="button animate-on-scroll" href="https://wa.me/213793335611?text=Hi%20Aissa,%20I%20would%20like%20to%20get%20in%20touch%20regarding%20a%20project." target="_blank" rel="noopener noreferrer">Get in touch <span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <div class="footer-row">
+          <div class="footer-contact animate-on-scroll">
+            <a class="footer-email" href="mailto:aissa_talbi.official@hotmail.com">aissa_talbi.official@hotmail.com</a>
+            <div class="social-links" aria-label="Professional social media profiles">
+              <a class="social-link" href="https://www.linkedin.com/in/aissatalbi" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 8.3H3.2V21h3.3V8.3ZM4.85 3A1.95 1.95 0 1 0 4.85 6.9 1.95 1.95 0 0 0 4.85 3ZM21 13.72c0-3.83-2.04-5.62-4.76-5.62-2.2 0-3.18 1.21-3.73 2.06V8.3H9.2V21h3.31v-6.28c0-1.65.31-3.25 2.36-3.25 2.02 0 2.04 1.89 2.04 3.36V21H21v-7.28Z"/></svg>
+              </a>
+              <a class="social-link instagram" href="https://www.instagram.com/verotalbi" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg>
+              </a>
+              <a class="social-link" href="https://wa.me/213793335611?text=Hi%20Aissa,%20I%20would%20like%20to%20get%20in%20touch%20regarding%20a%20project." target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.05 4.93A9.91 9.91 0 0 0 12 2a9.94 9.94 0 0 0-8.61 14.91L2 22l5.22-1.37A9.94 9.94 0 0 0 12 22h.01a9.95 9.95 0 0 0 7.04-17.07ZM12 20.25a8.22 8.22 0 0 1-4.2-1.16l-.3-.18-3.1.82.83-3.02-.2-.31A8.22 8.22 0 1 1 12 20.25Zm4.51-6.16c-.25-.13-1.47-.73-1.7-.82-.23-.08-.39-.13-.56.13-.16.25-.64.82-.78.99-.14.17-.29.19-.54.06-.25-.13-1.04-.38-1.98-1.22-.73-.65-1.22-1.45-1.36-1.7-.14-.25-.01-.39.11-.52.11-.11.25-.29.37-.43.12-.15.16-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.16 0-.42.06-.64.31-.22.25-.84.82-.84 2s.86 2.32.98 2.48c.12.17 1.68 2.57 4.07 3.6.57.25 1.01.4 1.36.51.57.18 1.09.16 1.5.1.46-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.1-.22-.16-.47-.29Z"/></svg>
+              </a>
+            </div>
+          </div>
+          <div class="copyright animate-on-scroll">© 2026 Aissa Talbi / All rights reserved</div>
+        </div>
+      </footer>
+    </div>
+  </div>
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.animate-on-scroll').forEach((el) => observer.observe(el));
+  </script>
+</body>
+</html>
